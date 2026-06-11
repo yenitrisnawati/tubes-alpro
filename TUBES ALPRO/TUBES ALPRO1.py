@@ -197,7 +197,7 @@ def binarySearch():
     print("Data tidak ditemukan\n")
 
 
-# ================= SELECTION SORT =================
+# Selection Sort
 def selectionSort():
     for i in range(len(dataProyek)):
         maxIndex = i
@@ -208,15 +208,14 @@ def selectionSort():
     print("Data berhasil diurutkan berdasarkan pembayaran terbesar\n")
 
 
-# ================= INSERTION SORT =================
+# Insertion Sort
 def insertionSort():
-    # Deadline format DD/MM/YYYY → dikonversi ke datetime agar perbandingan tanggal akurat
     for i in range(1, len(dataProyek)):
         dataSementara = dataProyek[i]
-        tglSementara = datetime.strptime(dataSementara["deadline"], "%d/%m/%Y")
+        tglSementara = datetime.strptime(dataSementara["deadline"], "%d/%m/%Y") # Penambahan
         j = i - 1
 
-        while j >= 0 and datetime.strptime(dataProyek[j]["deadline"], "%d/%m/%Y") > tglSementara:
+        while j >= 0 and datetime.strptime(dataProyek[j]["deadline"], "%d/%m/%Y") > tglSementara: # Penambahan
             dataProyek[j + 1] = dataProyek[j]
             j -= 1
 
@@ -224,7 +223,7 @@ def insertionSort():
     print("Data berhasil diurutkan berdasarkan deadline (terlama ke terbaru)\n")
 
 
-# ================= UPDATE STATUS =================
+# Update Status
 def updateStatus():
     cari = input("Masukkan ID proyek : ")
     ditemukan = False
@@ -250,7 +249,7 @@ def updateStatus():
                 return
             
             print("Status berhasil diupdate\n") # Perubahan
-            simpanData()
+            simpanData() # Penambahan
             ditemukan = True
             break
 
@@ -258,7 +257,7 @@ def updateStatus():
         print("Data tidak ditemukan\n")
 
 
-# ================= LAPORAN =================
+# Laporan
 def laporan():
     proyekSelesai = 0
     proyekBerjalan = 0
@@ -278,8 +277,8 @@ def laporan():
     print()
 
 
-# ================= MUAT & SIMPAN DATA =================
-def muatData():
+# Memuat data
+def muatData(): # Penambahan
     global dataProyek
     try:
         with open(FILE, "r") as f:
@@ -287,15 +286,14 @@ def muatData():
     except FileNotFoundError:
         dataProyek = []
 
-
-def simpanData():
+# Menyimpan Data
+def simpanData(): # Penambahan
     with open(FILE, "w") as f:
         json.dump(dataProyek, f, indent=2)
 
-
 muatData()
 
-# ================= MENU UTAMA =================
+# Menu Utama
 while True:
     print("========== Menu Program ==========")
     print("1. Tambah Proyek")
