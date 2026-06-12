@@ -19,8 +19,8 @@ def inputID(x): # Penambahan
         nilai = input(x).strip()
         if nilai == "":
             print("ID tidak boleh kosong!")
-        elif nilai.startswith("-"):
-            print("ID tidak boleh negatif / diawali tanda minus!")
+        elif not nilai.isalnum():
+            print("ID hanya boleh berisi huruf dan angka!")
         else:
             return nilai
 
