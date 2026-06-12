@@ -35,7 +35,7 @@ def inputPembayaran(x): # Penambahan
             else:
                 return nilai
         except ValueError:
-            print("Masukkan angka yang valid!")
+            print("Pembayaran hanya boleh berisi angka!")
 
 
 # Validasi Deadline
